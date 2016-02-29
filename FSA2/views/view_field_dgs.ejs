@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Diesel Generator Services</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/simple-sidebar.css" rel="stylesheet">
+    <link href="/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet">
+	
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+	
+</head>
+
+<body>
+    <nav class="navbar navbar-default no-margin">
+    <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header fixed-brand">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
+                      <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><i class="glyphicon glyphicon-certificate"></i>Makasa Sun</a>        
+                </div><!-- navbar-header-->
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="active" ><button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2"> <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span></button></li>
+                            </ul>
+                </div><!-- bs-example-navbar-collapse-1 -->
+    </nav>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+
+                <li class="active">
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-user fa-stack-1x "></i></span> App Users</a>
+                       <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                        <li><a href="/add_user">Add App User</a></li>
+                        <li><a href="/view_users">View App User</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-tree-conifer fa-stack-1x "></i></span> IHS Sites</a>
+                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                        <li><a href="/add_sites"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-new-window fa-stack-1x "></i></span>Add Sites</a></li>
+                        <li><a href="/view_sites"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-new-window fa-stack-1x "></i></span>View Sites</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="/view_dgs"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-folder-open fa-stack-1x "></i></span>View Field Data</a>
+                </li>
+                <li>
+                    <a href="/view_fuel_del"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-folder-open fa-stack-1x "></i></span>View Fuel Delivery</a>
+                </li>
+                <li>
+                    <a href="/view_site_mat_del"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-folder-open fa-stack-1x "></i></span>View Site Material Delivery</a>
+                </li>
+                <li>
+                    <a href="/view_eco"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-folder-open fa-stack-1x "></i></span>View Emergency Call Out</a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-server fa-stack-1x "></i></span>Contact</a>
+                </li>
+            </ul>
+        </div><!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid xyz">
+                <div class="row">
+                    <div class="col-lg-12">
+                       <br>
+    <table id="newTable" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Site ID</th>
+                <th>Makasa ID</th>
+                <th>Date Entered</th>
+                <th>Latitude</th>
+				<th>Longitude</th>
+				<th>View Data</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Site ID</th>
+                <th>Makasa ID</th>
+                <th>Date Entered</th>
+                <th>Latitude</th>
+				<th>Longitude</th>
+				<th>View Data</th>
+            </tr>
+        </tfoot>
+        <tbody>
+		 <% dgservicess.forEach( function ( dgservices ){ %> 
+            <tr>
+                <td><%= dgservices.siteID %></td>
+                <td><%= dgservices.makasaID %></td>
+                <td><%= dgservices.timestamp %></td>
+                <td><%= dgservices.latitude %></td>
+                <td><%= dgservices.longitude %></td>
+				<td><input type="button" onclick="location.href='/view_field_dgs/<%= dgservices._id %>'" value="View"></td>
+				
+            </tr>
+		<% }); %>
+			</tbody>
+    </table>
+	<th><br></th>
+	
+		<% dgservicess.forEach( function ( dgservices ){ %>
+	<% if( dgservices._id == current ){ %>
+	
+	<table class="flakes-table">
+		<colgroup>
+			<col span="1" style="width:20px" />
+			<col span="1" style="width:50%" />
+		</colgroup>
+		<th><br></th>
+		<thead><th>FIELD DATA<th></thead>
+			<tr>			
+			<th>SITE ID:</th>
+			<td><%= dgservices.siteID %></td>
+		  </tr>
+		  <tr>
+			<th>SENT BY:</th>
+			<td><%= x.surname %> <%= x.first_name %> <%= x.other_name %></td>
+		  </tr>
+		  <tr>
+			<th>DATE:</th>
+			<td><%= dgservices.timestamp %></td>
+		 </tr>
+		 <tr>			
+			<th>GEOLOCATION OF FIELD ENGR:</th>
+			<td>Latitude:&nbsp;<%= dgservices.latitude %><br>Longitude:&nbsp;<%= dgservices.longitude %><br>Accuracy:&nbsp;<%= dgservices.accuracy %>m</td>
+		  </tr>
+		  <tr>
+			<th>PHONE NUMBER:</th>
+			<td><%= x.phone_no %></td>
+		 </tr>
+		 <tr>
+			<th>REF ID:</th>
+			<td><%= dgservices._id %></td>
+		 </tr>
+		
+		<th><br></th>
+		<thead><th>DIESEL GENERATOR 1<th></thead>
+		<th><br></th>
+	
+	
+		
+		<tr>			
+			<th>DG MAKE:</th>
+			<td><%= dgservices.dg1Make %></td>
+		  </tr>
+		  <tr>
+			<th>KVA RATING:</th>
+			<td><%= dgservices.dg1KVA %></td>
+		  </tr>
+		  <tr>
+			<th>RUN HOUR:</th>
+			<td><%= dgservices.dg1RunHour %></td>
+		 </tr>
+		 <tr>			
+			<th>ENGINE MAKE:</th>
+			<td><%= dgservices.dg1EngineMake %></td>
+		  </tr>
+		  <tr>
+			<th>KIT INSTALLED:</th>
+			<td><%= dgservices.dg1kitInstalled %></td>
+		  </tr>
+		  <tr>
+			<th>OIL LEVEL:</th>
+			<td><%= dgservices.dg1OilLevel %></td>
+		 </tr>
+		 <tr>
+			<th>OIL PRESURE SWITCH:</th>
+			<td><%= dgservices.dg1OilPresSwitch %></td>
+		 </tr>
+		 <tr>
+			<th>COOLANT LEVEL:</th>
+			<td><%= dgservices.dg1CoolantLevel %></td>
+		 </tr>
+		 <tr>
+			<th>FUEL LINE CHECK:</th>
+			<td><%= dgservices.dg1FuelLines %></td>
+		 </tr>
+		 <tr>
+			<th>IS AC ALTERNATOR CLEAN, NO ABNORMAL NOISE:</th>
+			<td><%= dgservices.dg1ACalternator %></td>
+		 </tr>
+		 <tr>
+			<th>AC ALTERNATOR VOLTAGE OUTPUT:</th>
+			<td><%= dgservices.dg1ACalternatorVolts %></td>
+		 </tr>
+		 <tr>
+			<th>SITE AUTOMATION STATUS:</th>
+			<td><%= dgservices.dg1SiteAutomation %></td>
+		 </tr>
+		 <tr>
+			<th>ALL ELECTRICAL CONNECTIONS CHECKED:</th>
+			<td><%= dgservices.dg1ElectricalConnection %></td>
+		 </tr>
+		 <tr>
+			<th>SPARK PLUGS REMOVED, CLEANED, REPLACED:</th>
+			<td><%= dgservices.dg1SparkPlugService %></td>
+		 </tr>
+		 <tr>
+			<th>BATTERY VOLTAGE IN STOP CONDITION:</th>
+			<td><%= dgservices.dg1BatteryStopVolts %></td>
+		 </tr>
+		 <tr>
+			<th>BATTERY CRANK VOLTAGE:</th>
+			<td><%= dgservices.dg1BatteryCrankVolts %></td>
+		 </tr>
+		 <tr>
+			<th>BATTERY CHARGER OUTPUT VOLTAGE IN RUNNING CONDITION:</th>
+			<td><%= dgservices.dg1ChargerRunningVolts %></td>
+		 </tr>
+		 <tr>
+			<th>NEUTRAL-TO-EARTH VOLTAGE:</th>
+			<td><%= dgservices.dg1NeutralEarthVolts %></td>
+		 </tr>
+		 
+	<th><br></th>
+	<thead><th>DIESEL GENERATOR 1 maintenace<th></thead>
+	<th><br></th>
+		 <tr>
+			<th>CHOOSE SERVICE PACK:</th>
+			<td><%= dgservices.dg1ServicePack %></td>
+		 </tr>
+		 <tr>
+			<th>FUEL FILTER CHANGED:</th>
+			<td><%= dgservices.dg1FuelFilterChanged %></td>
+		 </tr>
+		 <tr>
+			<th>OIL FILTER CHANGED:</th>
+			<td><%= dgservices.dg1OilFilterChanged %></td>
+		 </tr>
+		 <tr>
+			<th>LUBE OIL LITRES REPLACED:</th>
+			<td><%= dgservices.dg1LubeOilReplaced %></td>
+		 </tr>
+		 <tr>
+			<th>CLEAR AIR FILTER:</th>
+			<td><%= dgservices.dg1CleanAirFilter %></td>
+		 </tr>
+		 <tr>
+			<th>AIR FILTER REPLACED:</th>
+			<td><%= dgservices.dg1AirFilterReplaced %></td>
+		 </tr>
+		 <tr>
+			<th>COOLANT LEVEL (litres):</th>
+			<td><%= dgservices.dg1CoolantLevel %></td>
+		 </tr>
+		 <tr>
+			<th>FAN BELT CHANGED:</th>
+			<td><%= dgservices.dg1FanBeltChanged %></td>
+		 </tr>
+		 <tr>
+			<th>WATER TRAP CLEANED:</th>
+			<td><%= dgservices.dg1WaterTrapChanged %></td>
+		 </tr>
+		 <tr>
+			<th>WATER TRAP FILTER REPLACED:</th>
+			<td><%= dgservices.dg1WaterTrapFilterReplaced %></td>
+		 </tr>
+		 <tr>
+			<th>RADIATOR FIN CLEANED:</th>
+			<td><%= dgservices.dg1RadiatorFinsCleaned %></td>
+		 </tr>
+		 <tr>
+			<th>DISTILLED WATER QUANTITY ADDED (litres):</th>
+			<td><%= dgservices.dg1WaterAdded %></td>
+		 </tr>
+		 <tr>
+			<th>WATER HOSES FREE OF CRACKS AND LEAKAGES :</th>
+			<td><%= dgservices.dg1WaterHoseNoLeakage %></td>
+		 </tr>
+		 <tr>
+			<th>FUEL LINES REPAIRS / REPLACEMENT, FITTINGS, VALVES AND OTHER ESSENTIAL ACCESSORIES:</th>
+			<td><%= dgservices.dg1OtherReplacement %></td>
+		 </tr>
+
+
+		 
+		 
+
+		<th><br></th>
+		<thead><th>DIESEL GENERATOR 2<th></thead>
+		<th><br></th>
+	
+		
+		<tr>			
+			<th>DG MAKE:</th>
+			<td><%= dgservices.dg2Make %></td>
+		  </tr>
+		  <tr>
+			<th>KVA RATING:</th>
+			<td><%= dgservices.dg2KVA %></td>
+		  </tr>
+		  <tr>
+			<th>RUN HOUR:</th>
+			<td><%= dgservices.dg2RunHour %></td>
+		 </tr>
+		 <tr>			
+			<th>ENGINE MAKE:</th>
+			<td><%= dgservices.dg2EngineMake %></td>
+		  </tr>
+		  <tr>
+			<th>KIT INSTALLED:</th>
+			<td><%= dgservices.dg2kitInstalled %></td>
+		  </tr>
+		  <tr>
+			<th>OIL LEVEL:</th>
+			<td><%= dgservices.dg2OilLevel %></td>
+		 </tr>
+		 <tr>
+			<th>OIL PRESURE SWITCH:</th>
+			<td><%= dgservices.dg2OilPresSwitch %></td>
+		 </tr>
+		 <tr>
+			<th>COOLANT LEVEL:</th>
+			<td><%= dgservices.dg2CoolantLevel %></td>
+		 </tr>
+		 <tr>
+			<th>FUEL LINE CHECK:</th>
+			<td><%= dgservices.dg2FuelLines %></td>
+		 </tr>
+		 <tr>
+			<th>IS AC ALTERNATOR CLEAN, NO ABNORMAL NOISE:</th>
+			<td><%= dgservices.dg2ACalternator %></td>
+		 </tr>
+		 <tr>
+			<th>AC ALTERNATOR VOLTAGE OUTPUT:</th>
+			<td><%= dgservices.dg2ACalternatorVolts %></td>
+		 </tr>
+		 <tr>
+			<th>SITE AUTOMATION STATUS:</th>
+			<td><%= dgservices.dg2SiteAutomation %></td>
+		 </tr>
+		 <tr>
+			<th>ALL ELECTRICAL CONNECTIONS CHECKED:</th>
+			<td><%= dgservices.dg2ElectricalConnection %></td>
+		 </tr>
+		 <tr>
+			<th>SPARK PLUGS REMOVED, CLEANED, REPLACED:</th>
+			<td><%= dgservices.dg2SparkPlugService %></td>
+		 </tr>
+		 <tr>
+			<th>BATTERY VOLTAGE IN STOP CONDITION:</th>
+			<td><%= dgservices.dg2BatteryStopVolts %></td>
+		 </tr>
+		 <tr>
+			<th>BATTERY CRANK VOLTAGE:</th>
+			<td><%= dgservices.dg2BatteryCrankVolts %></td>
+		 </tr>
+		 <tr>
+			<th>BATTERY CHARGER OUTPUT VOLTAGE IN RUNNING CONDITION:</th>
+			<td><%= dgservices.dg2ChargerRunningVolts %></td>
+		 </tr>
+		 <tr>
+			<th>NEUTRAL-TO-EARTH VOLTAGE:</th>
+			<td><%= dgservices.dg2NeutralEarthVolts %></td>
+		 </tr>
+		 
+	<th><br></th>
+	<thead><th>DIESEL GENERATOR 2 maintenace<th></thead>
+	<th><br></th>
+		 <tr>
+			<th>CHOOSE SERVICE PACK:</th>
+			<td><%= dgservices.dg2ServicePack %></td>
+		 </tr>
+		 <tr>
+			<th>FUEL FILTER CHANGED:</th>
+			<td><%= dgservices.dg2FuelFilterChanged %></td>
+		 </tr>
+		 <tr>
+			<th>OIL FILTER CHANGED:</th>
+			<td><%= dgservices.dg2OilFilterChanged %></td>
+		 </tr>
+		 <tr>
+			<th>LUBE OIL LITRES REPLACED:</th>
+			<td><%= dgservices.dg2LubeOilReplaced %></td>
+		 </tr>
+		 <tr>
+			<th>CLEAR AIR FILTER:</th>
+			<td><%= dgservices.dg2CleanAirFilter %></td>
+		 </tr>
+		 <tr>
+			<th>AIR FILTER REPLACED:</th>
+			<td><%= dgservices.dg2AirFilterReplaced %></td>
+		 </tr>
+		 <tr>
+			<th>COOLANT LEVEL (litres):</th>
+			<td><%= dgservices.dg2CoolantLevel %></td>
+		 </tr>
+		 <tr>
+			<th>FAN BELT CHANGED:</th>
+			<td><%= dgservices.dg2FanBeltChanged %></td>
+		 </tr>
+		 <tr>
+			<th>WATER TRAP CLEANED:</th>
+			<td><%= dgservices.dg2WaterTrapChanged %></td>
+		 </tr>
+		 <tr>
+			<th>WATER TRAP FILTER REPLACED:</th>
+			<td><%= dgservices.dg2WaterTrapFilterReplaced %></td>
+		 </tr>
+		 <tr>
+			<th>RADIATOR FIN CLEANED:</th>
+			<td><%= dgservices.dg2RadiatorFinsCleaned %></td>
+		 </tr>
+		 <tr>
+			<th>DISTILLED WATER QUANTITY ADDED (litres):</th>
+			<td><%= dgservices.dg2WaterAdded %></td>
+		 </tr>
+		 <tr>
+			<th>WATER HOSES FREE OF CRACKS AND LEAKAGES :</th>
+			<td><%= dgservices.dg2WaterHoseNoLeakage %></td>
+		 </tr>
+		 <tr>
+			<th>FUEL LINES REPAIRS / REPLACEMENT, FITTINGS, VALVES AND OTHER ESSENTIAL ACCESSORIES:</th>
+			<td><%= dgservices.dg2OtherReplacement %></td>
+		 </tr>
+
+
+		 <th><br></th>
+	</table>
+<% } else { %>
+		
+    <% } %>
+
+    <br>
+ 
+<% }); %>
+
+
+<%= x.surname %>
+<%= x.first_name %>
+
+
+				   </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+	<link rel="stylesheet" type="text/css" href="/gridforms/gridforms.css">
+	<link rel="stylesheet" type="text/css" href="/media/style.css">
+	<link rel="stylesheet" type="text/css" href="/css/all.css">
+	
+    <script src="/js/jquery-1.11.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/sidebar_menu.js"></script>
+	
+	<script type="text/javascript" src="/js/search.js"> </script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+</body>
+
+</html>

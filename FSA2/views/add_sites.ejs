@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Add Site</title>
+	
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/simple-sidebar.css" rel="stylesheet">
+    <link href="/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet">
+	
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+	
+</head>
+
+<body>
+    <nav class="navbar navbar-default no-margin">
+    <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header fixed-brand">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
+                      <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+                    </button>
+                    <a class="navbar-brand" href="/"><i class="glyphicon glyphicon-certificate"></i> MAKASA SUN</a>        
+                </div><!-- navbar-header-->
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="active" ><button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2"> <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span></button></li>
+                            </ul>
+                </div><!-- bs-example-navbar-collapse-1 -->
+    </nav>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+
+                <li class="active">
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-user fa-stack-1x "></i></span> App Users</a>
+                       <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                        <li><a href="/add_user">Add App User</a></li>
+                        <li><a href="/view_user">View App User</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-tree-conifer fa-stack-1x "></i></span> IHS Sites</a>
+                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                        <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-new-window fa-stack-1x "></i></span>Add Sites</a></li>
+                        <li><a href="/view_sites"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-new-window fa-stack-1x "></i></span>View Sites</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="/view_dgs"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-folder-open fa-stack-1x "></i></span>View Field Data</a>
+                </li>
+                <li>
+                    <a href="/view_fuel_del"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-folder-open fa-stack-1x "></i></span>View Fuel Delivery</a>
+                </li>
+                <li>
+                    <a href="/view_site_mat_del"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-folder-open fa-stack-1x "></i></span>View Site Material Delivery</a>
+                </li>
+                <li>
+                    <a href="/view_eco"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-folder-open fa-stack-1x "></i></span>View Emergency Call Out</a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-server fa-stack-1x "></i></span>Contact</a>
+                </li>
+            </ul>
+        </div><!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid xyz">
+                <div class="row">
+                    <div class="col-lg-12">
+                      <h1>Makasa Sun Field Service Application</h1>
+                        <p>Add IHS Sites</p>
+                    
+		<br>
+
+	<form class="my-grid-form" action="/create_site" method="post" accept-charset="utf-8">
+		<fieldset>
+			<legend>Site Registration</legend>
+			<div data-row-span="3">
+				<div data-field-span="1">
+					<label>ID</label>
+					<input type="text" name="id" autofocus>
+				</div>
+				<div data-field-span="1">
+					<label>Site ID</label>
+					<input type="text" name="site_id" autofocus>
+				</div>
+				<div data-field-span="1">
+					<label>IHS Site ID</label>
+					<input type="text" name="ihs_site_id" autofocus>
+				</div>
+			
+			</div>
+			
+			<div data-row-span="2">
+				<div data-field-span="1">
+				<label>Take Over Date</label>
+					<input type="date" name="take_over_date" min="2000-01-01" autofocus>
+				</div>
+				<div data-field-span="1">
+				<label>Project ID</label>
+					<input type="text" name="project_id" autofocus>
+				</div>
+			</div>
+			
+			<div data-row-span="2">
+				<div data-field-span="1">
+				<label>Longitude</label>
+					<input type="text" name="longitude" autofocus>
+				</div>
+				<div data-field-span="1">
+				<label>Latitude</label>
+					<input type="text" name="latitude" autofocus>
+				</div>
+			</div>
+			
+			<div data-row-span="2">
+				<div data-field-span="1">
+					<label>IHS Region</label>
+					    <input type="text" name="ihs_region" autofocus>
+      				</div>
+				<div data-field-span="1">
+					<label>State</label>
+					<select name="state">
+						<option>State where site is located</option>
+						<option value="Abia State">Abia State</option>
+						<option value="Adamawa State">Adamawa State</option>
+						<option value="Akwa Ibom State">Akwa Ibom State</option>
+						<option value="Anambra State">Anambra State</option>
+						<option value="Bauchi State">Bauchi State</option>
+						<option value="Bayelsa State">Bayelsa State</option>
+						<option value="Benue State">Benue State</option>
+						<option value="Borno State">Borno State</option>
+						<option value="Cross River State">Cross River State</option>
+						<option value="Delta State">Delta State</option>
+						<option value="Ebonyi State">Ebonyi State</option>
+						<option value="Edo State">Edo State</option>
+						<option value="Ekiti State">Ekiti State</option>
+						<option value="Enugu State">Enugu State</option>
+						<option value="Federal Capital Territory">Federal Capital Territory</option>
+						<option value="Gombe State">Gombe State</option>
+						<option value="Imo State">Imo State</option>
+						<option value="Jigawa State">Jigawa State</option>
+						<option value="Kaduna State">Kaduna State</option>
+						<option value="Kano State">Kano State</option>
+						<option value="Katsina State">Katsina State</option>
+						<option value="Kebbi State">Kebbi State</option>
+						<option value="Kogi State">Kogi State</option>
+						<option value="Kwara State">Kwara State</option>
+						<option value="Lagos State">Lagos State</option>
+						<option value="Nasarawa State">Nasarawa State</option>
+						<option value="Niger State">Niger State</option>
+						<option value="Ogun State">Ogun State</option>
+						<option value="Ondo State">Ondo State</option>
+						<option value="Osun State">Osun State</option>
+						<option value="Oyo State">Oyo State</option>
+						<option value="Plateau State">Plateau State</option>
+						<option value="Rivers State">Rivers State</option>
+						<option value="Sokoto State">Sokoto State</option>
+						<option value="Taraba State">Taraba State</option>
+						<option value="Yobe State">Yobe State</option>
+						<option value="Zamfara State">Zamfara State</option>
+					</select>
+				</div>
+			</div>
+			
+			<div data-row-span="1">
+				<div data-field-span="1">
+				<label>Site Address</label>
+					<input type="text" name="site_address" autofocus>
+				</div>
+			</div>
+			
+			
+		</fieldset>
+		
+					
+					<input type="submit" value="Register" style="margin-top:15px; float: right;">
+				
+	</form>
+	<br><br>
+	<br>
+	<hr>
+	
+	 <table id="newTable" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Site ID</th>
+                <th>IHS Site ID</th>
+                <th>Longitude</th>
+                <th>Latitude</th>
+                <th>State</th>
+				<th>Update</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>ID</th>
+                <th>Site ID</th>
+                <th>IHS Site ID</th>
+                <th>Longitude</th>
+                <th>Latitude</th>
+                <th>State</th>
+				<th>Update</th>
+            </tr>
+        </tfoot>
+        <tbody>
+		<% sites.forEach( function ( site ){ %>
+            <tr>
+                <td><%= site.id %></td>
+                <td><%= site.site_id %></td>
+                <td><%= site.ihs_site_id %></td>
+                <td><%= site.longitude %></td>
+                <td><%= site.latitude %></td>
+                <td><%= site.state %></td>
+				<td><input type="button" onclick="location.href='/edit_sites/<%= site._id %>'" value="update"</td>
+            </tr>
+		<% }); %>
+			</tbody>
+    </table>
+
+					</div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+	<link rel="stylesheet" type="text/css" href="/gridforms/gridforms.css">
+	<link rel="stylesheet" type="text/css" href="/media/style.css">
+    <script src="/js/jquery-1.11.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/sidebar_menu.js"></script>
+	<script type="text/javascript" src="/js/search.js"> </script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+</body>
+
+</html>

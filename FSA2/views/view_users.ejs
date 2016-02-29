@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>View App User</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/simple-sidebar.css" rel="stylesheet">
+    <link href="/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet">
+	
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+	
+	
+	
+</head>
+
+<body>
+    <nav class="navbar navbar-default no-margin">
+    <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header fixed-brand">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
+                      <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+                    </button>
+                    <a class="navbar-brand" href="/"><i class="glyphicon glyphicon-certificate"></i> MAKASA SUN</a>        
+                </div><!-- navbar-header-->
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="active" ><button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2"> <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span></button></li>
+                            </ul>
+                </div><!-- bs-example-navbar-collapse-1 -->
+    </nav>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+
+                <li class="active">
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-user fa-stack-1x "></i></span> App Users</a>
+                       <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                        <li><a href="/add_user">Add App User</a></li>
+                        <li><a href="#">View App User</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-tree-conifer fa-stack-1x "></i></span> IHS Sites</a>
+                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                        <li><a href="/add_sites"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-new-window fa-stack-1x "></i></span>Add Sites</a></li>
+                        <li><a href="/view_sites"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-new-window fa-stack-1x "></i></span>View Sites</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="/view_dgs"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-folder-open fa-stack-1x "></i></span>View Field Data</a>
+                </li>
+                <li>
+                    <a href="/view_fuel_del"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-folder-open fa-stack-1x "></i></span>View Fuel Delivery</a>
+                </li>
+                <li>
+                    <a href="/view_site_mat_del"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-folder-open fa-stack-1x "></i></span>View Site Material Delivery</a>
+                </li>
+                <li>
+                    <a href="/view_eco"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-folder-open fa-stack-1x "></i></span>View Emergency Call Out</a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-server fa-stack-1x "></i></span>Contact</a>
+                </li>
+            </ul>
+        </div><!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid xyz">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Makasa Sun Field Service Application</h1>
+                        <p>View App Users</p>
+						
+						
+                   <table id="newTable" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Surname</th>
+                <th>First Name</th>
+                <th>Other Name</th>
+                <th>Email</th>
+                <th>Position</th>
+				<th>Update</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>ID</th>
+                <th>Surname</th>
+                <th>First Name</th>
+                <th>Other Name</th>
+                <th>Email</th>
+                <th>Position</th>
+				<th>Update</th>
+            </tr>
+        </tfoot>
+        <tbody>
+		<% todos.forEach( function ( todo ){ %>
+            <tr>
+                <td><%= todo.makasa_id %></td>
+                <td><%= todo.surname %></td>
+                <td><%= todo.first_name %></td>
+                <td><%= todo.other_name %></td>
+                <td><%= todo.email %></td>
+                <td><%= todo.position %></td>
+				<td><input type="button" onclick="location.href='/edit/<%= todo._id %>'" value="update"</td>
+            </tr>
+		<% }); %>
+			</tbody>
+    </table>
+
+
+				   </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="/js/jquery-1.11.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/sidebar_menu.js"></script>
+	<script type="text/javascript" src="/js/search.js"> </script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+	
+</body>
+
+</html>
