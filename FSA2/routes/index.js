@@ -153,7 +153,7 @@ exports.create_site = function ( req, res, next ){
   }).save( function ( err, site, count ){
     if( err ) return next( err );
 
-    res.redirect( '/' );
+    res.redirect( '/add_sites' );
   });
 };
 
@@ -206,7 +206,7 @@ exports.index_populate_sites = function(req, res, next){
   }).save( function ( err, todo, count ){
     if( err ) return next( err );
 
-    res.redirect( '/' );
+    res.redirect( '/add_user' );
   });
 }; 
 
@@ -218,7 +218,7 @@ exports.destroy_site = function ( req, res, next ){
     site.remove( function ( err, site ){
       if( err ) return next( err );
 
-      res.redirect( '/' );
+      res.redirect( '/view_sites' );
     });
   });
 };
@@ -230,7 +230,7 @@ exports.destroy = function ( req, res, next ){
     todo.remove( function ( err, todo ){
       if( err ) return next( err );
 
-      res.redirect( '/' );
+      res.redirect( '/views_users' );
     });
   });
 };
@@ -525,7 +525,7 @@ exports.index_dgs = function(req, res, next){
 	 
 	 dgservices.save(function(err, dgservices, count ){
 		 if( err ) return next (err);
-			res.status(200).send('Hello Makasa Sun');
+			res.status(200).send('OK');
 			});
 					
 };
@@ -548,7 +548,7 @@ exports.index_fd = function(req, res, next){
 	 
 	 fueldel.save(function(err, fueldel, count ){
 		 if( err ) return next (err);
-			res.status(200).send('Hello Makasa Sun');
+			res.status(200).send('OK');
 			});
 					
 };
@@ -574,7 +574,7 @@ exports.index_smd = function(req, res, next){
 		
 	 sitemdel.save(function(err, sitemdel, count ){
 		 if( err ) return next (err);
-			res.status(200).send('Hello Makasa Sun');
+			res.status(200).send('OK');
 			});
 					
 };
@@ -594,7 +594,7 @@ exports.index_eco = function(req, res, next){
 		
 	 emcout.save(function(err, emcout, count ){
 		 if( err ) return next (err);
-			res.status(200).send('Hello Makasa Sun');
+			res.status(200).send('OK');
 			});
 					
 };
