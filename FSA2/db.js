@@ -145,7 +145,9 @@ var DGServices = new Schema({
     accuracy : Number,
     timestamp : String,
     makasaID : String,
-	makasaObjectID : String
+	makasaObjectID : String,
+	batteryLevel : Number,
+	isBatteryPlugged : String
 });
 mongoose.model('DGServices', DGServices);
 

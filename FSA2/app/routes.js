@@ -178,6 +178,8 @@ app.post( '/index_gps', function(req, res, next){
 		 gpslog.accuracy	=	req.body.accuracy;
 		 gpslog.timestamp	=	req.body.timestamp;
 		 gpslog.makasaID	=	req.body.makasaID;
+		 gpslog.batteryLevel = req.body.batteryLevel;
+		 gpslog.isBatteryPlugged = req.body.isBatteryPlugged;
 	 
 	 gpslog.save(function(err, gpslog, count ){
 		 if( err ) return next (err);
@@ -267,6 +269,8 @@ app.post( '/index_dgs', function(req, res, next){
 		dgservices.accuracy    =    req.body.accuracy;
 		dgservices.timestamp    =    req.body.timestamp;
 		dgservices.makasaID    =    req.body.makasaID;
+		dgservices.batteryLevel = req.body.batteryLevel;
+		dgservices.isBatteryPlugged = req.body.isBatteryPlugged;
 	 
 	 dgservices.save(function(err, dgservices, count ){
 		 if( err ) return next (err);
@@ -288,6 +292,8 @@ app.post( '/index_fd', function(req, res, next){
 		fueldel.accuracy 	=	req.body.accuracy;
 		fueldel.timestamp 	=	req.body.timestamp;
 		fueldel.makasaID 	=	req.body.makasaID;
+		fueldel.batteryLevel = req.body.batteryLevel;
+		fueldel.isBatteryPlugged = req.body.isBatteryPlugged;
 	 
 	 fueldel.save(function(err, fueldel, count ){
 		 if( err ) return next (err);
@@ -311,6 +317,8 @@ app.post( '/index_smd', function(req, res, next){
 		sitemdel.accuracy 	=	req.body.longitude;
 		sitemdel.timestamp 	=	req.body.timestamp;
 		sitemdel.makasaID 	=	req.body.makasaID;
+		sitemdel.batteryLevel = req.body.batteryLevel;
+		sitemdel.isBatteryPlugged = req.body.isBatteryPlugged;
 		
 	 sitemdel.save(function(err, sitemdel, count ){
 		 if( err ) return next (err);
@@ -328,6 +336,8 @@ app.post( '/index_eco', function(req, res, next){
 		emcout.accuracy 	=	req.body.accuracy;
 		emcout.timestamp 	=	req.body.timestamp;
 		emcout.makasaID 	=	req.body.makasaID;
+		emcout.batteryLevel = req.body.batteryLevel;
+		emcout.isBatteryPlugged = req.body.isBatteryPlugged;
 		
 	 emcout.save(function(err, emcout, count ){
 		 if( err ) return next (err);
