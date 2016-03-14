@@ -24,7 +24,7 @@
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
                       <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><i class="glyphicon glyphicon-certificate"></i>Makasa Sun</a>        
+                    <a class="navbar-brand" href="/index_home"><i class="glyphicon glyphicon-certificate"></i>Makasa Sun</a>        
                 </div><!-- navbar-header-->
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -66,7 +66,7 @@
                     <a href="/view_eco"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-folder-open fa-stack-1x "></i></span>View Emergency Call Out</a>
                 </li>
                 <li>
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-cog fa-stack-1x "></i></span>Settings</a>
+                    <a href="/settings"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-cog fa-stack-1x "></i></span>Settings</a>
                 </li>
             </ul>
         </div><!-- /#sidebar-wrapper -->
@@ -102,10 +102,10 @@
             <tr>
                 <td><%= emcout.siteIDCallout %></td>
                 <td><%= emcout.makasaID %></td>
-                <td><%= emcout.timestamp %></td>
+                <td><%= emcout.timeOfEmergency %></td>
                 <td><%= emcout.latitude %></td>
                 <td><%= emcout.longitude %></td>
-				<td><input type="button" onclick="location.href='/view_eco/<%= emcout._id %>'" value="view"</td>
+				<td><input type="button" onclick="location.href='/view_field_eco/<%= emcout._id %>/<%= emcout.makasaID %>'" value="view"</td>
 				
             </tr>
 		<% }); %>
@@ -113,7 +113,8 @@
     </table>
 	
 	
-	
+	<hr>
+	<input class="btn btn-warning btn-lg" type="submit" name="Submit" value="Export" onclick="exportTbl();" style="float: right">
 	
 	
 	<th><br></th>
@@ -121,7 +122,7 @@
 		<% emcouts.forEach( function ( emcout ){ %>
 	<% if( emcout._id == current ){ %>
 	
-	<table class="flakes-table">
+	<table class="flakes-table" id="Emergency_Call_Out">
 		<colgroup>
 			<col span="1" style="width:20px" />
 			<col span="1" style="width:50%" />
@@ -155,6 +156,10 @@
 		 <tr>
 			<th>REF ID:</th>
 			<td><%= emcout._id %></td>
+		 </tr>
+		 <tr>
+			<th>BATTERY INFO:</th>
+			<td>Battery Level:&nbsp;<%= emcout.batteryLevel %>%<br>Is Battery Charging:&nbsp;<%= emcout.isBatteryPlugged %></td>
 		 </tr>
 		
 		<th><br></th>
@@ -216,6 +221,26 @@
 	<script type="text/javascript" src="/js/search.js"> </script>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+	
+	<!-- export files -->
+	<script src="/js/xlsx.core.js"></script>
+	<script src="/js/Blob.js"></script>
+	<script src="/js/FileSaver.js"></script>
+	<script src="/js/tableexport.js"></script>
+	<script>
+		function exportTbl()
+		{
+		$("#Emergency_Call_Out").tableExport({
+			headings: true,                    // (Boolean), display table headings (th elements) in the first row
+			formats: ["xlsx", "csv", "txt"],    // (String[]), filetypes for the export
+			fileName: "id",                    // (id, String), filename for the downloaded file
+			bootstrap: true,                   // (Boolean), style buttons using bootstrap
+			position: "bottom"                 // (top, bottom), position of the caption element relative to table
+		});	
+			
+		}
+
+	</script>
 </body>
 
 </html>

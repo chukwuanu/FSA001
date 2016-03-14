@@ -25,6 +25,42 @@ exports.index_app = function(req, res, next){
 
 
 
+
+exports.sites_id_query = function(req, res, next){
+var limit = 10;
+var maxDistance = 80;
+
+// we need to convert the distance to radians
+// the raduis of Earth is approximately 6371 kilometers
+maxDistance /= 6371;	
+	
+	
+var coords = [];  
+coords[0] = req.body.longitude || 0;  
+coords[1] = req.body.latitude || 0;  
+	
+	
+Site.find({  
+    loc: {
+        $near: coords,
+        $maxDistance: maxDistance
+    }
+}).limit(limit).exec(function(err, locations) {
+    if (err) {
+        return res.status(500).json(err);
+    }
+
+    res.status(200).json(locations);
+});
+
+
+};
+
+
+
+
+
+
 exports.index = function ( req, res ){
   Todo.
     find().
@@ -163,6 +199,10 @@ exports.create_site = function ( req, res, next ){
 
 
 exports.index_populate_sites = function(req, res, next){
+	var arr = [];
+	arr[0] = req.body.longitude;
+	arr[1] = req.body.latitude;
+
 	var sitesLog = new Site();
 	var x = req.body.ID;
 	  sitesLog.id  = req.body.ID,
@@ -174,7 +214,8 @@ exports.index_populate_sites = function(req, res, next){
 	  sitesLog.latitude	 = req.body.latitude,
 	  sitesLog.ihs_region = req.body.IHSregion,
 	  sitesLog.state = req.body.state,
-	  sitesLog.site_address  = req.body.siteAddress
+	  sitesLog.site_address  = req.body.siteAddress,
+	  sitesLog.loc = arr;
 	 
 	 sitesLog.save(function(err, sitesLog, count ){
 		 if( err ) return next (err);

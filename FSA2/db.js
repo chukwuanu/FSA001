@@ -1,6 +1,18 @@
 var mongoose = require( 'mongoose' );
 var Schema   = mongoose.Schema;
+var bcrypt = require( 'bcrypt' );
 
+var Auth = new Schema({
+	user_name : String,
+	password :	String
+});
+		Auth.methods.generateHash = function(password){
+		return bcrypt.hashSync(password, bcrypt.genSaltSync(9));
+	};
+	Auth.methods.validPassword = function(password){
+		return bcrypt.compareSync(password, this.password);
+	}
+mongoose.model( 'Auth', Auth );
 
  var Todo = new Schema({
     user_id    : String,
@@ -30,6 +42,10 @@ var Site = new Schema({
 	ihs_region   : String,
 	state	   : String,
 	site_address : String,
+	loc: {
+    type: [Number],  // [<longitude>, <latitude>]
+    index: '2d'      // create the geospatial index
+    },
     updated_at : Date
 });
 mongoose.model( 'Site', Site );
@@ -41,7 +57,9 @@ var GPSlog = new Schema({
 	 timestamp	: String,
 	 siteID	:	String,
 	 makasaID	: String,
-	 makasaObjectID : String
+	 makasaObjectID : String,
+	 batteryLevel : Number,
+	 isBatteryPlugged : String
 });
 mongoose.model('GPSlog', GPSlog);
 
@@ -145,7 +163,9 @@ var FuelDel = new Schema({
 	accuracy : Number,
 	timestamp : String,
 	makasaID : String,
-	makasaObjectID  :	String
+	makasaObjectID  :	String,
+	batteryLevel : Number,
+	isBatteryPlugged : String
 });
 mongoose.model('FuelDel', FuelDel);
 
@@ -166,7 +186,9 @@ var SiteMDel = new Schema({
 	timestamp : String,
 	siteID	:	String,
 	makasaID : String,
-	makasaObjectID : String
+	makasaObjectID : String,
+	batteryLevel : Number,
+	isBatteryPlugged : String
 });
 mongoose.model('SiteMDel', SiteMDel);
 
@@ -181,7 +203,9 @@ var EMCout = new Schema({
 	timestamp : String,
 	siteID	:	String,
 	makasaID : String,
-	makasaObjectID : String
+	makasaObjectID : String,
+	batteryLevel : Number,
+	isBatteryPlugged : String
 });
 mongoose.model('EMCout', EMCout);
 

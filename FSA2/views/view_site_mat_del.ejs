@@ -24,7 +24,7 @@
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
                       <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><i class="glyphicon glyphicon-certificate"></i>Makasa Sun</a>        
+                    <a class="navbar-brand" href="/index_home"><i class="glyphicon glyphicon-certificate"></i>Makasa Sun</a>        
                 </div><!-- navbar-header-->
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -66,7 +66,7 @@
                     <a href="/view_eco"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-folder-open fa-stack-1x "></i></span>View Emergency Call Out</a>
                 </li>
                 <li>
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-cog fa-stack-1x "></i></span>Settings</a>
+                    <a href="/settings"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-cog fa-stack-1x "></i></span>Settings</a>
                 </li>
             </ul>
         </div><!-- /#sidebar-wrapper -->
@@ -106,7 +106,7 @@
             <tr>
                 <td><%= sitemdel.siteID %></td>
                 <td><%= sitemdel.makasaID %></td>
-                <td><%= sitemdel.timestamp %></td>
+                <td><%= sitemdel.timeOfMaterialDelivery %></td>
                 <td><%= sitemdel.latitude %></td>
                 <td><%= sitemdel.longitude %></td>
 				<td><input type="button" onclick="location.href='/view_field_site_mat_del/<%= sitemdel._id %>/<%= sitemdel.makasaID %>'" value="view"</td>

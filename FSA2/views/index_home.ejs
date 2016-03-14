@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Home&nbsp|&nbspMap</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/simple-sidebar.css" rel="stylesheet">
+    <link href="/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet">
+	
+	
+	
+	<link rel="stylesheet" href="/css/leaflet.css" />
+	<script src="/js/leaflet.js"></script>
+	<link rel="stylesheet" href="/css/screen.css" />
+
+	<link rel="stylesheet" href="/css/MarkerCluster.css" />
+	<link rel="stylesheet" href="/css/MarkerCluster.Default.css" />
+    
+    <link rel="stylesheet" href="/css/leaflet.usermarker.css"/>
+    
+    
+	<script src="/js/leaflet.markercluster-src.js"></script>
+	
+	<script src="/js/makasaSites.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/leaflet.usermarker.js"></script>
+	   <style>
+	#map {
+		/*width: 800px;*/
+	}
+	
+	#sidebar {
+		/*width:300px;*/
+		
+	}
+	
+	.cleardiv {
+		float:none;
+	}
+	
+	
+	
+	div {
+  margin: 0 0 0.75em 0;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"] + label {
+  color: #292321;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+input[type="radio"] + label span {
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  margin: -1px 4px 0 0;
+  vertical-align: middle;
+  cursor: pointer;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+
+input[type="radio"] + label span {
+  background-color: #292321;
+}
+
+input[type="radio"]:checked + label span {
+  background-color: #CC3300;
+}
+
+input[type="radio"] + label span,
+input[type="radio"]:checked + label span {
+  -webkit-transition: background-color 0.4s linear;
+  -o-transition: background-color 0.4s linear;
+  -moz-transition: background-color 0.4s linear;
+  transition: background-color 0.4s linear;
+}
+	
+	</style>
+	
+	
+</head>
+
+<body>
+    <nav class="navbar navbar-default no-margin">
+	<a href="/logout" class="btn btn-default btn-sm" style="float: right; margin-top: 7px; margin-right: 30px;" >Logout</a>
+    <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header fixed-brand">
+				
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
+                      <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><i class="glyphicon glyphicon-certificate"></i> MAKASA SUN</a>
+									
+                </div><!-- navbar-header-->
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="active" ><button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2"> <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span></button></li>
+                            </ul>
+                </div><!-- bs-example-navbar-collapse-1 -->
+				
+				
+    </nav>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+
+                <li class="active">
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-user fa-stack-1x "></i></span> App Users</a>
+                     <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                        <li><a href="/add_user">Add App User</a></li>
+                        <li><a href="/view_users">View App Users</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-tree-conifer fa-stack-1x "></i></span> IHS Sites</a>
+                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                        <li><a href="/add_sites"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-new-window fa-stack-1x "></i></span>Add Sites</a></li>
+                        <li><a href="/view_sites"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-new-window fa-stack-1x "></i></span>View Sites</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="/view_dgs"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-folder-open fa-stack-1x "></i></span>View Field Data</a>
+                </li>
+                <li>
+                    <a href="/view_fuel_del"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-folder-open fa-stack-1x "></i></span>View Fuel Delivery</a>
+                </li>
+                <li>
+                    <a href="/view_site_mat_del"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-folder-open fa-stack-1x "></i></span>View Site Material Delivery</a>
+                </li>
+                <li>
+                    <a href="/view_eco"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-folder-open fa-stack-1x "></i></span>View Emergency Call Out</a>
+                </li>
+				<li>
+                    <a href="/view_user_location"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-folder-open fa-stack-1x "></i></span>View User Location</a>
+                </li>
+                <li>
+                    <a href="/settings"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-cog fa-stack-1x "></i></span>Settings</a>
+                </li>
+            </ul>
+        </div><!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid xyz">
+                <div class="row">
+                    <div class="col-lg-12">
+                       <h1>Makasa Sun Field Service Application</h1>
+                       <p>Maps</p>
+					  
+					   
+						   
+						   
+						   
+					   <hr>
+		 <div id = "map"></div> 
+    
+			<div id="sidebar"> 
+				<input name="set location" type="button" value="set location" id="map-locate" onClick="locatem();">
+			</div> 
+    
+         <div class="cleardiv"> MAKASA SUN SITES</div>
+					   
+					   
+					   
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="/js/jquery-1.11.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/sidebar_menu.js"></script>
+</body>
+<script type="text/javascript">
+
+
+
+//var beaver_width = $('#map').style.offsetWidth;
+
+//alert(document.getElementById('map').offsetWidth);
+//$('#map').style.width = "100%";
+//var max_beaver_width = $('#map').offsetWidth;
+//$('beaver').style.width = beaver_width + 'px';
+
+
+
+
+var towerIcon = L.icon({
+				iconUrl: '/images/tower_icon.png',
+				shadowUrl: '/images/tower_shadow.png',
+			
+				iconSize:     [48, 48],
+				popupAnchor: [20, 48], // size of the icon
+				shadowSize:   [42, 48], // size of the shadow
+				iconAnchor:   [20, 48], // point of the icon which will correspond to marker's location
+				shadowAnchor: [20, 48],  // the same for the shadow
+				popupAnchor:  [0, -40] // point from which the popup should open relative to the iconAnchor
+				
+			});
+
+
+	var gen = '<div><input type="radio" id="radio01" name="radio" checked="checked"/><label for="radio01"><span></span>GEN 1</label></div><div><input type="radio" id="radio02" name="radio"/><label for="radio02"><span></span>GEN 2</label></div>';
+	
+
+		var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+				maxZoom: 18,
+				attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> | <a href="http://servotronicstech.com">Servotronics Technology</a>'
+			}),
+			latlng = L.latLng(6.4933712, 3.3599341);
+			
+			
+			
+		var map = L.map('map', {center: latlng, zoom: 16, layers: [tiles]});
+
+		var markers = L.markerClusterGroup({ chunkedLoading: true });
+		
+		for (var i = 0; i < addressPoints.length; i++) {
+			var a = addressPoints[i];
+			var title = gen + "<br>" + "Site ID: " + a["siteID"] + "<br>"  + "Address: " + a["siteAddress"];
+			if(!isNaN(a["latitude"]) && !isNaN(a["longitude"]) && a["latitude"] !== '' && a["longitude"] !== ''){
+			var marker = L.marker(L.latLng(a["latitude"], a["longitude"]), {icon: towerIcon, title: title});
+			marker.bindPopup(title);
+			markers.addLayer(marker);
+			}
+		}
+
+		map.addLayer(markers);
+		
+		
+		
+		
+		
+		// marker for current position
+        var markerLocate = null;
+       function locatem() {
+           
+                if (!markerLocate){
+                    markerLocate = L.userMarker([6.4933712, 3.3599341], {pulsing:true}).addTo(map);
+                
+               markerLocate.setLatLng([6.4933712, 3.3599341]);
+                markerLocate.setAccuracy(150);
+				
+				 markerLocate.addTo(map);
+				 map.setView([6.4933712, 3.3599341]);
+				}
+				
+				
+				else{
+					
+                map.removeLayer(markerLocate);
+                markerLocate = null;
+          
+				}
+				
+           
+           
+        }
+		
+		
+locatem();
+	</script>
+</html>

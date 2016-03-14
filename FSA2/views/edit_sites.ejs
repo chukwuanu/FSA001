@@ -25,7 +25,7 @@
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
                       <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
                     </button>
-                    <a class="navbar-brand" href="/"><i class="glyphicon glyphicon-certificate"></i> MAKASA SUN</a>        
+                    <a class="navbar-brand" href="/index_home"><i class="glyphicon glyphicon-certificate"></i> MAKASA SUN</a>        
                 </div><!-- navbar-header-->
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -67,7 +67,7 @@
                     <a href="/view_eco"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-folder-open fa-stack-1x "></i></span>View Emergency Call Out</a>
                 </li>
                 <li>
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-cog fa-stack-1x "></i></span>Settings</a>
+                    <a href="/settings"><span class="fa-stack fa-lg pull-left"><i class="glyphicon glyphicon-cog fa-stack-1x "></i></span>Settings</a>
                 </li>
             </ul>
         </div><!-- /#sidebar-wrapper -->
@@ -224,8 +224,8 @@
                 <td><%= site.longitude %></td>
                 <td><%= site.latitude %></td>
                 <td><%= site.state %></td>
-				<td><input type="button" onclick="location.href='/destroy_d/<%= site._id %>'" value="delete"</td>
-				<td><input type="button" onclick="location.href='/edit_sites/<%= site._id %>'" value="update"</td>
+				<td><input type="button" onclick="location.href='/destroy_site/<%= site._id %>'" value="delete"></td>
+				<td><input type="button" onclick="location.href='/edit_sites/<%= site._id %>'" value="update"></td>
             </tr>
 		<% }); %>
 			</tbody>

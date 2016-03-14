@@ -1,0 +1,52 @@
+[
+    {
+        "_id": "56c1daa3398208880858bca3",
+        "user_id": "NGSrGTdGe5ejNs8Mrm8IPwYxU8hzsBHQ",
+        "makasa_id": "LAG002",
+        "first_name": "ifodo",
+        "last_name": "okio",
+        "password": "okio",
+        "email": "ifodomartin@yahoo.com",
+        "phone_no": "u6875778",
+        "imei_no": "7857458589699",
+        "address": "10, Alhaji Azeez Ejidiran Street, Ayobo",
+        "updated_at": "2016-02-18T19:12:44.362Z",
+        "__v": 0,
+        "other_name": "undefined",
+        "position": "engr",
+        "surname": "Okio"
+    },
+    {
+        "_id": "56c528494404ddb407e5ab78",
+        "user_id": "uQhNttHtQ11jdI0xhx4IRzSlSWJdv09C",
+        "makasa_id": "ABJ003",
+        "surname": "Ifodo",
+        "first_name": "Martin",
+        "other_name": "Okieriete",
+        "password": "",
+        "email": "ifodomartin@yahoo.com",
+        "phone_no": "08026817134",
+        "imei_no": "35400704072044728478",
+        "address": "10, Alhaji Azeez Ejidiran Street, Ayobo, Lagos, Nigeria.",
+        "position": "Field Service Tech",
+        "updated_at": "2016-02-18T02:11:21.261Z",
+        "__v": 0
+    },
+    {
+        "_id": "56c5c2f43c7e2778192dc060",
+        "user_id": "uQhNttHtQ11jdI0xhx4IRzSlSWJdv09C",
+        "content": "ssstttrrr",
+        "updated_at": "2016-02-18T19:12:12.066Z",
+        "__v": 0,
+        "address": "undefined",
+        "email": "undefined",
+        "first_name": "Iluholo",
+        "imei_no": "undefined",
+        "makasa_id": "TOP007",
+        "other_name": "undefined",
+        "password": "undefined",
+        "phone_no": "undefined",
+        "position": "undefined",
+        "surname": "Luemue"
+    }
+]
