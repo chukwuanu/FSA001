@@ -171,7 +171,7 @@ app.get(  '/view_eco', isLoggedIn, function(req, res){
 });
 
 //Routes For Mobile App Data
-app.post( '/index_gps', isLoggedIn, function(req, res, next){
+app.post( '/index_gps', function(req, res, next){
 		var gpslog = new GPSlog();
 		 gpslog.latitude	=	req.body.latitude;
 		 gpslog.longitude	=	req.body.longitude;
@@ -184,7 +184,7 @@ app.post( '/index_gps', isLoggedIn, function(req, res, next){
 			res.status(200).send(gpslog._id + " " + gpslog.latitude);
 			});
 });
-app.post( '/index_dgs', isLoggedIn, function(req, res, next){
+app.post( '/index_dgs', function(req, res, next){
 		var dgservices = new DGServices();
 		dgservices.dg1kitInstalled    =    req.body.dg1kitInstalled;
 		dgservices.dg1OilLevelOK    =    req.body.dg1OilLevelOK;
@@ -273,7 +273,7 @@ app.post( '/index_dgs', isLoggedIn, function(req, res, next){
 			res.status(200).send('OK');
 			});
 });
-app.post( '/index_fd', isLoggedIn, function(req, res, next){
+app.post( '/index_fd', function(req, res, next){
 		var fueldel = new FuelDel();
 		fueldel.siteIDFuel 	=	req.body.siteIDFuel;
 		fueldel.tank1Capacity 	=	req.body.tank1Capacity;
@@ -294,7 +294,7 @@ app.post( '/index_fd', isLoggedIn, function(req, res, next){
 			res.status(200).send('OK');
 			});
 });
-app.post( '/index_smd', isLoggedIn, function(req, res, next){
+app.post( '/index_smd', function(req, res, next){
 		var sitemdel = new SiteMDel();
 		sitemdel.siteIDMaterial 	=	req.body.siteIDMaterial;
 		sitemdel.material1Delivered 	=	req.body.material1Delivered;
@@ -317,7 +317,7 @@ app.post( '/index_smd', isLoggedIn, function(req, res, next){
 			res.status(200).send('OK');
 			});
 });
-app.post( '/index_eco', isLoggedIn, function(req, res, next){
+app.post( '/index_eco', function(req, res, next){
 		var emcout = new EMCout();
 		emcout.siteIDCallout 	=	req.body.siteIDCallout;
 		emcout.emergencyEncountered 	=	req.body.emergencyEncountered;

@@ -105,7 +105,7 @@
                 <td><%= sitemdel.timestamp %></td>
                 <td><%= sitemdel.latitude %></td>
                 <td><%= sitemdel.longitude %></td>
-				<td><input type="button" onclick="location.href='/view_field_site_mat_del/<%= sitemdel._id %>/<%= sitemdel.makasaID %>'" value="view"</td>
+				<td><input type="button" onclick="location.href='/view_field_site_mat_del/<%= sitemdel._id %>/<%= sitemdel.makasaID %>'" value="view"></td>
 				
             </tr>
 		<% }); %>
@@ -159,7 +159,7 @@
 		 </tr>
 		 <tr>
 			<th>BATTERY INFO:</th>
-			<td>Battery Level:&nbsp;<%= sitemdel.batteryLevel %><br>Is Battery Charging:&nbsp;<%= sitemdel.isBatteryPlugged %></td>
+			<td>Battery Level:&nbsp;<%= sitemdel.batteryLevel %>%<br>Is Battery Charging:&nbsp;<%= sitemdel.isBatteryPlugged %></td>
 		 </tr>
 		
 		<th><br></th>

@@ -104,12 +104,12 @@
         <tbody>
 		 <% sitemdels.forEach( function ( sitemdel ){ %> 
             <tr>
-                <td><%= sitemdel.siteID %></td>
+                <td><%= sitemdel.siteIDMaterial %></td>
                 <td><%= sitemdel.makasaID %></td>
                 <td><%= sitemdel.timeOfMaterialDelivery %></td>
                 <td><%= sitemdel.latitude %></td>
                 <td><%= sitemdel.longitude %></td>
-				<td><input type="button" onclick="location.href='/view_field_site_mat_del/<%= sitemdel._id %>/<%= sitemdel.makasaID %>'" value="view"</td>
+				<td><input type="button" onclick="location.href='/view_field_site_mat_del/<%= sitemdel._id %>/<%= sitemdel.makasaID %>'" value="view"></td>
 				
             </tr>
 		<% }); %>

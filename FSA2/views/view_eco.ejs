@@ -104,12 +104,12 @@
         <tbody>
 		 <% emcouts.forEach( function ( emcout ){ %> 
             <tr>
-                <td><%= emcout.siteID %></td>
+                <td><%= emcout.siteIDCallout %></td>
                 <td><%= emcout.makasaID %></td>
                 <td><%= emcout.timeOfEmergency %></td>
                 <td><%= emcout.latitude %></td>
                 <td><%= emcout.longitude %></td>
-				<td><input type="button" onclick="location.href='/view_field_eco/<%= emcout._id %>/<%= emcout.makasaID %>'" value="view"</td>
+				<td><input type="button" onclick="location.href='/view_field_eco/<%= emcout._id %>/<%= emcout.makasaID %>'" value="view"></td>
 				
             </tr>
 		<% }); %>
